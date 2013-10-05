@@ -5,11 +5,8 @@ if [ -f ~/.bashrc ]; then
   source ~/.bashrc
 fi
 
-# # From this tutorial I read...
-# TODO: Find source; determine whether necessary
-# export PAGER="$(brew --prefix)/etc/most -s"
+eval "$(rbenv init -)"
 
-# Some auto-complete crap below
 if [ -f $(brew --prefix)/etc/bash_completion ]; then
   . $(brew --prefix)/etc/bash_completion
 fi
@@ -20,16 +17,10 @@ if [ -f ~/.git-completion.sh ]; then
   source ~/.git-completion.sh
 fi
 
-if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
-
-
-# JSON Encoding default for Cuke testing
-# Added this due to errors at one point when running cuke tests
-# TODO: Check if needed, given last needed in 2011-12
-export LC_CTYPE=en_US.UTF-8
-
 # TODO: Find source for this guy
 alias fact="elinks -dump randomfunfacts.com | sed -n '/^| /p' | tr -d \|"
+
+alias trim_whitespace="sh ~/development/dotfiles/trim_whitespace"
 
 #### Smooth the way for DTerm and possibly other terminals that barf on tput colors:
 # TODO: Find source; might not need
@@ -136,6 +127,9 @@ alias  b='bundle'
 alias be='b exec'
 # Run bundle using Gemfile.local
 alias belocal='be --gemfile Gemfile.local'
+
+# Info on Hub: http://hub.github.com/
+alias git=hub
 
 ##########################################
 #       Project-specific Aliases         #
