@@ -1,3 +1,5 @@
+export RBENV_VERSION=2.1.0
+
 ORIGINAL_PATH=$PATH
 PATH=""
 
@@ -105,6 +107,10 @@ GIT_PS1_SHOWSTASHSTATE=1 #... if something is stashed($)
 GIT_PS1_SHOWUNTRACKEDFILES=1 #... untracked files(%)
 GIT_PS1_SHOWUPSTREAM="auto"  #... 'verbose' .. others avaliable
 
+
+# Gist gem
+# make private 'by default'
+alias gist='gist -p'
 
 # Commonly used aliases
 alias ls='ls -l'
