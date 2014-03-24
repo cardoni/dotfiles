@@ -1,13 +1,9 @@
-export RBENV_VERSION=2.1.0
-
 ORIGINAL_PATH=$PATH
 PATH=""
 
 if [ -f ~/.bashrc ]; then
   source ~/.bashrc
 fi
-
-eval "$(rbenv init -)"
 
 if [ -f $(brew --prefix)/etc/bash_completion ]; then
   . $(brew --prefix)/etc/bash_completion
@@ -19,8 +15,12 @@ if [ -f ~/.git-completion.sh ]; then
   source ~/.git-completion.sh
 fi
 
-# TODO: Find source for this guy
-alias fact="elinks -dump randomfunfacts.com | sed -n '/^| /p' | tr -d \|"
+# Chruby
+source /usr/local/opt/chruby/share/chruby/chruby.sh
+# Suto-switch Ruby versions, given '.ruby-version' file(s)
+source /usr/local/opt/chruby/share/chruby/auto.sh
+# Set default Ruby version
+chruby 2.1.1
 
 alias trim_whitespace="sh ~/development/dotfiles/trim_whitespace"
 
@@ -108,8 +108,7 @@ GIT_PS1_SHOWUNTRACKEDFILES=1 #... untracked files(%)
 GIT_PS1_SHOWUPSTREAM="auto"  #... 'verbose' .. others avaliable
 
 
-# Gist gem
-# make private 'by default'
+# Gist gem: make private by default
 alias gist='gist -p'
 
 # Commonly used aliases
@@ -119,7 +118,7 @@ alias lld='ls -d */'
 alias l='ls -CF'
 
 # Prompt for confirmation when deleting
-alias rm='rm -rfi'
+alias rm='rm -i'
 
 # Show command history, sorted by most-used command(s)
 # Not sure where I found this one
@@ -134,25 +133,12 @@ alias be='b exec'
 # Run bundle using Gemfile.local
 alias belocal='be --gemfile Gemfile.local'
 
-# Info on Hub: http://hub.github.com/
-alias git=hub
 
 ##########################################
 #       Project-specific Aliases         #
 ##########################################
 
-# TODO: Move these into another dotfile and source on .bash_profile load instead
-# alias recpass='cd ~/development/recsolu/recpass/'
-# alias remember='cd ~/development/recsolu/remember/'
-# alias rectest='cd ~/development/recsolu/rectest/'
-# alias rectest_api='cd ~/development/recsolu/apidev-recsolu/tests/cucumber/'
-# alias apidev_recsolu='cd ~/development/recsolu/apidev-recsolu/'
-# alias symptomatica='clear && echo "Project Dir: `pwd`" && echo "" && cd ~/development/panda_strike/symptomatica/ && ls -la && echo "" && git status && echo ""'
-alias venyooz='cd ~/development/venyooz/'
-alias rails_core='cd ~/development/other/rails/'
-
 # Pry rails console
-# TODO: Fix this
 alias pryConsole='pry -r ./config/environment'
 
 ##########################################
@@ -161,9 +147,8 @@ alias pryConsole='pry -r ./config/environment'
 
 # TODO: Fix this mess below
 export EDITOR="/usr/local/bin/subl -w"
-export mate="/usr/local/bin/mate -w"
+export mate="/usr/local/bin/mate"
 alias slime=subl
-alias st=subl
 
 
 # Source ~/.bash_profile in shell
@@ -220,105 +205,18 @@ complete -o default -o nospace -F _git g
 # Via: https://coderwall.com/p/euwpig
 alias pretty-log="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
 
-# calc - simple calculator
-# usage: calc <equation>
-function calc() {
-  echo "$*" | bc
-}
-
 # # Search function (returns the first google result)
 search () {
   curl -s --get --data-urlencode "q=$*" http://ajax.googleapis.com/ajax/services/search/web?v=1.0 | \
   sed 's/"unescapedUrl":"\([^"]*\).*/\1/;s/.*GwebSearch",//'
 }
 
-# function bashtips {
-# TODO: Find source for this...
-# cat <<EOF
-#   ----------------------------------------
-#   DIRECTORIES
-#   ----------------------------------------
-#   ~-              Previous working directory
-#   pushd tmp       Push tmp && cd tmp
-#   popd            Pop && cd
-#   ----------------------------------------
-#   GLOBBING AND OUTPUT SUBSTITUTION
-#   ----------------------------------------
-#   ls a[b-dx]e     Globs abe, ace, ade, axe
-#   ls a{c,bl}e     Globs ace, able
-#   \$(ls)          \`ls\` (but nestable!)
-#   ----------------------------------------
-#   HISTORY MANIPULATION
-#   ----------------------------------------
-#   !!              Last command
-#   !?foo           Last command containing \`foo'
-#   ^foo^bar^       Last command containing \`foo',
-#   but substitute \`bar'
-#   !!:0            Last command word
-#   !!:^            Last command's first argument
-#   !\$             Last command's last argument
-#   !!:*            Last command's arguments
-#   !!:x-y          Arguments x to y of last command
-#   C-s             search forwards in history
-#   C-r             search backwards in history
-#   ----------------------------------------
-#   LINE EDITING
-#   ----------------------------------------
-#   M-d             kill to end of word
-#   C-w             kill to beginning of word
-#   C-k             kill to end of line
-#   C-u             kill to beginning of line
-#   M-r             revert all modifications
-#   to current line
-#   C-]             search forwards in line
-#   M-C-]           search backwards in line
-#   C-t             transpose characters
-#   M-t             transpose words
-#   M-u             uppercase word
-#   M-l             lowercase word
-#   M-c             capitalize word
-#   ----------------------------------------
-#   COMPLETION
-#   ----------------------------------------
-#   M-/             complete filename
-#   M-~             complete user name
-#   M-@             complete host name
-#   M-\$            complete variable name
-#   M-!             complete command name
-#   M-^             complete history
-# EOF
-# }
 
 # # function to make a directory and then cd into it
 # function make_dir_and_cd () {
 #   mkdir -p "$@" && cd $_
 # }
 
-# # function cd.. () {
-#   #   for run in {1..$@}; do
-#     #     # echo '../'
-#     #     echo $run
-#     #   done
-#     # }
-
-#     # list all of full_paths for the files in the pwd (or those specified)
-#     # Ex 1: $ allFilePaths
-#     # Ex 2: $ allFilePaths app/controllers
-#     # TODO: functionality of Ex 2 needs work and is currently broken
-#     function every_path         () {
-#       shopt -s nullglob
-#       for file in $(\ls "$@"); do
-#         echo -n $(pwd)
-#         [[ $(pwd) != "/" ]] && echo -n /
-#         echo -n $@
-#         [[ $(pwd) != "/" ]] && echo -n /
-#         echo $file
-#       done
-#     }
-
-
-#########################################################
-#########################################################
 
 # Custom prompt (with git status when in repo)
 export PS1='\[${tBlue}\]\W\[${tReset}${tGreen}\]$(__git_ps1 "[%s]")$\[${tReset}\]⇶ '
