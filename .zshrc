@@ -4,6 +4,9 @@ if [ -n "$ZSH_VERSION" ]; then
   chruby 2.2.0
 fi
 
+# One-liner that copies to the clipboard the previous 24-hours' worth of git-activity (in `pwd`) - Credit: Jacob Lowe (@jcblw)
+alias copy-whatididtoday="git-activity --json --me | stream-json-clipboard -k message --humanize -p'- '"
+
 # Get the numpad enter key to function correctly
 # Hat Tip: https://code.google.com/p/iterm2/issues/detail?id=2000
 bindkey -s "^[OM" "^M"
