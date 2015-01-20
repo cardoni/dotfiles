@@ -1,7 +1,7 @@
 if [ -n "$ZSH_VERSION" ]; then
   source /usr/local/opt/chruby/share/chruby/chruby.sh
   source /usr/local/opt/chruby/share/chruby/auto.sh
-  chruby 2.1.3
+  chruby 2.2.0
 fi
 
 # Get the numpad enter key to function correctly
