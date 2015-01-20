@@ -5,22 +5,27 @@ if [ -f ~/.bashrc ]; then
   source ~/.bashrc
 fi
 
-if [ -f $(brew --prefix)/etc/bash_completion ]; then
-  . $(brew --prefix)/etc/bash_completion
+
+if [ -n "$BASH_VERSION" ]; then
+  if [ -f $(brew --prefix)/share/bash-completion/bash_completion ]; then
+    source $(brew --prefix)/share/bash-completion/bash_completion
+  fi
+
+  if [ -f $(brew --prefix)/etc/autojump.sh; then
+    source $(brew --prefix)/etc/autojump.sh
+  fi
+
+  # if [ -f ~/.git-completion.sh ]; then
+  #   source ~/.git-completion.sh
+  # fi
 fi
 
-[[ -s `brew --prefix`/etc/autojump.sh ]] && . `brew --prefix`/etc/autojump.sh
-
-if [ -f ~/.git-completion.sh ]; then
-  source ~/.git-completion.sh
+# source chruby scripts if running either bash or zsh shell
+if [ -n "$BASH_VERSION" ] || [ -n "$ZSH_VERSION" ]; then
+  source /usr/local/opt/chruby/share/chruby/chruby.sh
+  source /usr/local/opt/chruby/share/chruby/auto.sh
+  chruby 2.2.0
 fi
-
-# Chruby
-source /usr/local/opt/chruby/share/chruby/chruby.sh
-# Suto-switch Ruby versions, given '.ruby-version' file(s)
-source /usr/local/opt/chruby/share/chruby/auto.sh
-# Set default Ruby version
-chruby 2.1.1
 
 alias trim_whitespace="sh ~/development/dotfiles/trim_whitespace"
 
@@ -211,12 +216,10 @@ search () {
   sed 's/"unescapedUrl":"\([^"]*\).*/\1/;s/.*GwebSearch",//'
 }
 
-
 # # function to make a directory and then cd into it
 # function make_dir_and_cd () {
 #   mkdir -p "$@" && cd $_
 # }
-
 
 # Custom prompt (with git status when in repo)
 export PS1='\[${tBlue}\]\W\[${tReset}${tGreen}\]$(__git_ps1 "[%s]")$\[${tReset}\]⇶ '
