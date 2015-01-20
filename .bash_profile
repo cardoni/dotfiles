@@ -235,3 +235,6 @@ PS1='${tBlue}[\W$(__git_ps1 " (%s)")]${tGreen}\$ ${tReset}'
 
 # Custom Terminal Title (PWD)??
 export PROMPT_COMMAND='echo -ne "\033]0;${PWD/#$HOME/~}\007"'
+
+# One-liner that copies to the clipboard the previous 24-hours' worth of git-activity (in `pwd`) - Credit: Jacob Lowe (@jcblw)
+alias copy-whatididtoday="git-activity --json --me | stream-json-clipboard -k message --humanize -p'- '"
