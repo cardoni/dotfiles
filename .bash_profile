@@ -116,11 +116,15 @@ GIT_PS1_SHOWUPSTREAM="auto"  #... 'verbose' .. others avaliable
 # Gist gem: make private by default
 alias gist='gist -p'
 
+# Colorized output of: list of git branches, ordered by most recent commit
+# via @estani (from: http://stackoverflow.com/a/18310499)
+alias glist='for ref in $(git for-each-ref --sort=-committerdate --format="%(refname)" refs/heads/ refs/remotes ); do git log -n1 $ref --pretty=format:"%Cgreen%cr%Creset %C(yellow)%d%Creset %C(bold blue)<%an>%Creset%n" | cat ; done | awk '"'! a["'$0'"]++'"
+
 # Commonly used aliases
+alias l='ls -CF'
 alias ls='ls -l'
 alias ll='ls -alF'
 alias lld='ls -d */'
-alias l='ls -CF'
 
 # Prompt for confirmation when deleting
 alias rm='rm -i'
