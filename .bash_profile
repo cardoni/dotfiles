@@ -155,6 +155,7 @@ alias pryConsole='pry -r ./config/environment'
 ##########################################
 
 # TODO: Fix this mess below
+# export EDITOR="/usr/local/bin/atom -w"
 export EDITOR="/usr/local/bin/subl -w"
 export mate="/usr/local/bin/mate"
 alias slime=subl
