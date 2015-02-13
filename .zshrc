@@ -4,6 +4,11 @@ if [ -n "$ZSH_VERSION" ]; then
   chruby 2.2.0
 fi
 
+# source: https://www.npmjs.com/package/dependency-check
+npm () {
+  ( [ "$1" != "publish" ] || dependency-check . ) && command npm "$@"
+}
+
 # One-liner that copies to the clipboard the previous 24-hours' worth of git-activity (in `pwd`) - Credit: Jacob Lowe (@jcblw)
 alias copy-whatididtoday="git-activity --json --me | stream-json-clipboard -k message --humanize -p'- '"
 
