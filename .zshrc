@@ -4,6 +4,11 @@ if [ -n "$ZSH_VERSION" ]; then
   chruby 2.2.0
 fi
 
+# nvm - https://github.com/creationix/nvm
+# sets nvm dir and loads nvm
+export NVM_DIR="/Users/greg/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
+
 # source: https://www.npmjs.com/package/dependency-check
 npm () {
   ( [ "$1" != "publish" ] || dependency-check . ) && command npm "$@"
@@ -11,6 +16,9 @@ npm () {
 
 # One-liner that copies to the clipboard the previous 24-hours' worth of git-activity (in `pwd`) - Credit: Jacob Lowe (@jcblw)
 alias copy-whatididtoday="git-activity --json --me | stream-json-clipboard -k message --humanize -p'- '"
+
+alias cbf="git checkout client/web/build/"
+alias dbf=cbf
 
 # Get the numpad enter key to function correctly
 # Hat Tip: https://code.google.com/p/iterm2/issues/detail?id=2000
@@ -75,7 +83,7 @@ fpath=(/usr/local/share/zsh-completions $fpath)
 
 # User configuration
 
-export PATH="/Users/greg/.gem/ruby/2.1.2/bin:/Users/greg/.rubies/ruby-2.1.2/lib/ruby/gems/2.1.0/bin:/Users/greg/.rubies/ruby-2.1.2/bin:/Applications/Postgres.app/Contents/Versions/9.3/bin:/usr/local/heroku/bin:/usr/local/sbin:/usr/local/bin:/Users/greg:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin"
+export PATH="/Users/greg/.gem/ruby/2.1.2/bin:/Users/greg/.rubies/ruby-2.1.2/lib/ruby/gems/2.1.0/bin:/Users/greg/.rubies/ruby-2.1.2/bin:/Applications/Postgres.app/Contents/Versions/9.3/bin:/usr/local/heroku/bin:/usr/local/sbin:/usr/local/bin:/Users/greg:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/local/bin/node"
 # export MANPATH="/usr/local/man:$MANPATH"
 
 # You may need to manually set your language environment
