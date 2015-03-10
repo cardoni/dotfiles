@@ -158,6 +158,7 @@ alias pryConsole='pry -r ./config/environment'
 # export EDITOR="/usr/local/bin/atom -w"
 export EDITOR="/usr/local/bin/subl -w"
 export mate="/usr/local/bin/mate"
+alias clear_toolbar="killall -KILL SystemUIServer"
 alias slime=subl
 
 
