@@ -27,8 +27,6 @@ if [ -n "$BASH_VERSION" ] || [ -n "$ZSH_VERSION" ]; then
   chruby 2.2.0
 fi
 
-alias trim_whitespace="sh ~/development/dotfiles/trim_whitespace"
-
 #### Smooth the way for DTerm and possibly other terminals that barf on tput colors:
 # TODO: Find source; might not need
 INTERACTIVETERM=-YES-
@@ -113,8 +111,9 @@ GIT_PS1_SHOWUNTRACKEDFILES=1 #... untracked files(%)
 GIT_PS1_SHOWUPSTREAM="auto"  #... 'verbose' .. others avaliable
 
 
-# Gist gem: make private by default
-alias gist='gist -p'
+##########################################
+#         Commonly-Used Aliases          #
+##########################################
 
 # Colorized output of: list of git branches, ordered by most recent commit
 # via @estani (from: http://stackoverflow.com/a/18310499)
@@ -125,6 +124,8 @@ alias l='ls -CF'
 alias ls='ls -l'
 alias ll='ls -alF'
 alias lld='ls -d */'
+alias trim_whitespace="sh ~/development/dotfiles/trim_whitespace"
+alias clear_toolbar="killall -KILL SystemUIServer"
 
 # Prompt for confirmation when deleting
 alias rm='rm -i'
@@ -133,8 +134,14 @@ alias rm='rm -i'
 # Not sure where I found this one
 alias history_ranking="sed '/^#/d' ~/.bash_history | awk '{print \$1}' | sort | uniq -c | sort -nr | head -20 | cat -n"
 
+# Source ~/.bash_profile in shell
+alias reloadProfile='export PATH=$ORIGINAL_PATH && source ~/.bash_profile && echo "SUCCESS: ~/.bash_profile reloaded!"'
+
+# Flush Mac OSX DNS cache
+alias flush_dns_cache='dscacheutil -flushcache'
+
 ##########################################
-#              Bundle Aliases            #
+#           Ruby-Related Aliases         #
 ##########################################
 
 alias  b='bundle'
@@ -142,10 +149,8 @@ alias be='b exec'
 # Run bundle using Gemfile.local
 alias belocal='be --gemfile Gemfile.local'
 
-
-##########################################
-#       Project-specific Aliases         #
-##########################################
+# Gist gem: make private by default
+alias gist='gist -p'
 
 # Pry rails console
 alias pryConsole='pry -r ./config/environment'
@@ -158,15 +163,9 @@ alias pryConsole='pry -r ./config/environment'
 # export EDITOR="/usr/local/bin/atom -w"
 export EDITOR="/usr/local/bin/subl -w"
 export mate="/usr/local/bin/mate"
-alias clear_toolbar="killall -KILL SystemUIServer"
 alias slime=subl
 
 
-# Source ~/.bash_profile in shell
-alias reloadProfile='export PATH=$ORIGINAL_PATH && source ~/.bash_profile && echo "SUCCESS: ~/.bash_profile reloaded!"'
-
-# Flush Mac OSX DNS cache
-alias flush_dns_cache='dscacheutil -flushcache'
 
 # don't put duplicate lines in the history. See bash(1) for more options
 # ... or force ignoredups and ignorespace

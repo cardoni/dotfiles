@@ -6,8 +6,8 @@ fi
 
 # nvm - https://github.com/creationix/nvm
 # sets nvm dir and loads nvm
-export NVM_DIR="/Users/greg/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
+export NVM_DIR=~/.nvm
+source $(brew --prefix nvm)/nvm.sh
 
 # source: https://www.npmjs.com/package/dependency-check
 npm () {
@@ -17,8 +17,6 @@ npm () {
 # One-liner that copies to the clipboard the previous 24-hours' worth of git-activity (in `pwd`) - Credit: Jacob Lowe (@jcblw)
 alias copy-whatididtoday="git-activity --json --me | stream-json-clipboard -k message --humanize -p'- '"
 
-alias cbf="git checkout client/web/build/"
-alias dbf=cbf
 
 # Get the numpad enter key to function correctly
 # Hat Tip: https://code.google.com/p/iterm2/issues/detail?id=2000
@@ -29,6 +27,10 @@ export ZSH=$HOME/.oh-my-zsh
 
 # Custom crap
 alias clear_toolbar="killall -KILL SystemUIServer"
+
+# Die build files die. TODO: remove build files from repo in the first place!
+alias cbf="git checkout client/web/build/"
+alias dbf=cbf
 
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
@@ -86,11 +88,12 @@ fpath=(/usr/local/share/zsh-completions $fpath)
 
 # User configuration
 
-export PATH="/Users/greg/.gem/ruby/2.1.2/bin:/Users/greg/.rubies/ruby-2.1.2/lib/ruby/gems/2.1.0/bin:/Users/greg/.rubies/ruby-2.1.2/bin:/Applications/Postgres.app/Contents/Versions/9.3/bin:/usr/local/heroku/bin:/usr/local/sbin:/usr/local/bin:/Users/greg:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/local/bin/node"
+# TODO: get 'greg' user-specific folders out of this PATH export and use '~' instead, like a normal person.
+export PATH="/Users/greg/.gem/ruby/2.1.2/bin:/Users/greg/.rubies/ruby-2.1.2/lib/ruby/gems/2.1.0/bin:/Users/greg/.rubies/ruby-2.1.2/bin:/Applications/Postgres.app/Contents/Versions/9.3/bin:/usr/local/heroku/bin:/usr/local/sbin:/usr/local/bin:/Users/greg:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/local/bin/node:/Users/greg/.nvm"
 # export MANPATH="/usr/local/man:$MANPATH"
 
 # You may need to manually set your language environment
-# export LANG=en_US.UTF-8
+export LANG=en_US.UTF-8
 
 # Preferred editor for local and remote sessions
 if [[ -n $SSH_CONNECTION ]]; then
