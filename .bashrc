@@ -1,3 +1,6 @@
+# source 'autoenv' so that it can source '.env' files on each 'cd'
+source /usr/local/opt/autoenv/activate.sh
+
 # export PATH="$HOME/.rbenv/bin:$ORIGINAL_PATH"
 export PATH="$HOME:$ORIGINAL_PATH"
 export PATH="/usr/local/bin:$PATH"
