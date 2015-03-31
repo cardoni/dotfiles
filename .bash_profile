@@ -141,6 +141,13 @@ alias reloadProfile='export PATH=$ORIGINAL_PATH && source ~/.bash_profile && ech
 alias flush_dns_cache='dscacheutil -flushcache'
 
 ##########################################
+#       JS / Node-Related Aliases        #
+##########################################
+alias nv10='nvm use 0.10'  # You do not need to specify the patch version
+alias nv12='nvm use 0.12'  # in order for it to load the most up-to-date ver.
+
+
+##########################################
 #           Ruby-Related Aliases         #
 ##########################################
 
