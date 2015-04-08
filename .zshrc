@@ -130,4 +130,5 @@ alias lld="ls -d */"
 # JS / Node aliases
 # With 'nvm use', you do not need to specify the patch number ( '0.10.XX' ) in order for it to load the most up-to-date ver. Cool.
 alias nv10='nvm use 0.10'
+alias nv11='nvm use 0.11'
 alias nv12='nvm use 0.12'

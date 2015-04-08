@@ -144,8 +144,8 @@ alias flush_dns_cache='dscacheutil -flushcache'
 #       JS / Node-Related Aliases        #
 ##########################################
 alias nv10='nvm use 0.10'  # You do not need to specify the patch version
-alias nv12='nvm use 0.12'  # in order for it to load the most up-to-date ver.
-
+alias nv11='nvm use 0.11'  # in order for it to load the most up-to-date ver.
+alias nv12='nvm use 0.12'
 
 ##########################################
 #           Ruby-Related Aliases         #
