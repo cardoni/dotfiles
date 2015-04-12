@@ -5,7 +5,7 @@ source /usr/local/opt/autoenv/activate.sh
 if [ -n "$ZSH_VERSION" ]; then
   source /usr/local/opt/chruby/share/chruby/chruby.sh
   source /usr/local/opt/chruby/share/chruby/auto.sh
-  chruby 2.2.0
+  chruby 2.2.2
 fi
 
 # nvm - https://github.com/creationix/nvm

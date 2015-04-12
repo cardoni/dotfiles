@@ -24,7 +24,7 @@ fi
 if [ -n "$BASH_VERSION" ] || [ -n "$ZSH_VERSION" ]; then
   source /usr/local/opt/chruby/share/chruby/chruby.sh
   source /usr/local/opt/chruby/share/chruby/auto.sh
-  chruby 2.2.0
+  chruby 2.2.2
 fi
 
 #### Smooth the way for DTerm and possibly other terminals that barf on tput colors:
