@@ -11,7 +11,7 @@ export PATH="~/.nvm:$PATH"
 # export PATH=$(npm bin):$PATH
 
 export PATH="/usr/local/heroku/bin:$PATH"
-export PATH="/Applications/Postgres.app/Contents/Versions/9.3/bin:$PATH"
+export PATH="/Applications/Postgres.app/Contents/Versions/9.4/bin:$PATH"
 
 # I believe running cucumber specs required the below or else would bark at me
 export LC_CTYPE="en_US.UTF-8"

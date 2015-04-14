@@ -93,7 +93,7 @@ fpath=(/usr/local/share/zsh-completions $fpath)
 # User configuration
 
 # TODO: get 'greg' user-specific folders out of this PATH export and use '~' instead, like a normal person.
-export PATH="/Users/greg/.gem/ruby/2.1.2/bin:/Users/greg/.rubies/ruby-2.1.2/lib/ruby/gems/2.1.0/bin:/Users/greg/.rubies/ruby-2.1.2/bin:/Applications/Postgres.app/Contents/Versions/9.3/bin:/usr/local/heroku/bin:/usr/local/sbin:/usr/local/bin:/Users/greg:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/local/bin/node:/Users/greg/.nvm"
+export PATH="/Users/greg/.gem/ruby/2.1.2/bin:/Users/greg/.rubies/ruby-2.1.2/lib/ruby/gems/2.1.0/bin:/Users/greg/.rubies/ruby-2.1.2/bin:/Applications/Postgres.app/Contents/Versions/9.4/bin:/usr/local/heroku/bin:/usr/local/sbin:/usr/local/bin:/Users/greg:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/local/bin/node:/Users/greg/.nvm"
 # export MANPATH="/usr/local/man:$MANPATH"
 
 # You may need to manually set your language environment
