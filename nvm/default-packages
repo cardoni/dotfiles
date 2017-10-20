@@ -1,0 +1,22 @@
+# This file—located in `$NVM_DIR/default-packages`—lists default
+# npm packages for install after each new `nvm install TKTK` command
+
+coffeescript
+diff-so-fancy
+eslint
+lerna
+node-inspector
+npm
+npm-check-updates
+npm-list-scripts
+npm-scripts-catalog
+serverless
+trash-cli
+trymodule
+
+# Jacob Lowe <jacoblowe2.0@gmail.com> (http://jcbl.ws/)
+git-activity
+stream-json-clipboard
+
+# Paul Irish
+git-recent
